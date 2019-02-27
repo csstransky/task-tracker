@@ -1,0 +1,13 @@
+<h1>Show Cart item</h1>
+
+<ul>
+
+  <li>
+    <strong>Count:</strong>
+    <%= @cart_item.count %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.cart_item_path(@conn, :edit, @cart_item) %></span>
+<span><%= link "Back", to: Routes.cart_item_path(@conn, :index) %></span>

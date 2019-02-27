@@ -6,7 +6,7 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :husky_shop, HuskyShopWeb.Endpoint,
+config :task_tracker, TaskTrackerWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
@@ -39,13 +39,13 @@ config :husky_shop, HuskyShopWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :husky_shop, HuskyShopWeb.Endpoint,
+config :task_tracker, TaskTrackerWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{lib/husky_shop_web/views/.*(ex)$},
-      ~r{lib/husky_shop_web/templates/.*(eex)$}
+      ~r{lib/task_tracker_web/views/.*(ex)$},
+      ~r{lib/task_tracker_web/templates/.*(eex)$}
     ]
   ]
 
@@ -60,9 +60,9 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
-config :husky_shop, HuskyShop.Repo,
-  username: "husky_shop",
+config :task_tracker, TaskTracker.Repo,
+  username: "task_tracker",
   password: "iChuseec1Kae",
-  database: "husky_shop_dev",
+  database: "task_tracker_dev",
   hostname: "localhost",
   pool_size: 10

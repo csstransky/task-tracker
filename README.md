@@ -1,6 +1,6 @@
 Shamelessly copied from Nat Tuck's repo: [here](https://github.com/NatTuck/husky_shop)
   
-# HuskyShop
+# TaskTracker
 
 To start your Phoenix server:
 

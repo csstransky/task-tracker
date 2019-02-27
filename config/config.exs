@@ -11,7 +11,7 @@ config :task_tracker,
 
 # Configures the endpoint
 config :task_tracker, TaskTrackerWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost", port: 4000],
   secret_key_base: "7Dpm1KHaCkpXVmLYnyslKvhQWSc7HP00UfaKWNbCxzkKoZqhhcP/Ne8BVN6UL6Ka",
   render_errors: [view: TaskTrackerWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: TaskTracker.PubSub,

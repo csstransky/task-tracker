@@ -1,13 +1,12 @@
-<h1>Show User</h1>
+<h1><%= @current_user.name %>'s Profile</h1>
 
-<ul>
-
-  <li>
+<ul class="list-group">
+  <li class="list-group-item">
     <strong>name:</strong>
     <%= @user.name %>
   </li>
 
-  <li>
+  <li class="list-group-item">
     <strong>Admin:</strong>
     <%= @user.admin %>
   </li>

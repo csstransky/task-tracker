@@ -1,7 +1,6 @@
 <h1>Show Task</h1>
 
 <ul>
-
   <li>
     <strong>Title:</strong>
     <%= @task.title %>
@@ -15,6 +14,11 @@
   <li>
     <strong>Time:</strong>
     <%= @task.time %>
+  </li>
+
+  <li>
+    <strong>Complete:</strong>
+    <%= @task.complete %>
   </li>
 
 </ul>

@@ -11,10 +11,17 @@ defmodule TaskTrackerWeb.TaskController do
 
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset,
+      list_users: TaskTracker.Users.list_users())
   end
 
   def create(conn, %{"task" => task_params}) do
+    # I have the user choose from user names instead of IDs, this block of code
+    # is used to revert it to a user_id so that it can be used by Tasks.
+    user_name = Map.get(task_params, "user_id")
+    user_id = TaskTracker.Users.get_user_by_name(user_name).id
+    task_params = Map.put(task_params, "user_id", user_id)
+
     case Tasks.create_task(task_params) do
       {:ok, task} ->
         conn
@@ -22,7 +29,8 @@ defmodule TaskTrackerWeb.TaskController do
         |> redirect(to: Routes.task_path(conn, :show, task))
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset,
+          list_users: TaskTracker.Users.list_users())
     end
   end
 
@@ -34,7 +42,8 @@ defmodule TaskTrackerWeb.TaskController do
   def edit(conn, %{"id" => id}) do
     task = Tasks.get_task!(id)
     changeset = Tasks.change_task(task)
-    render(conn, "edit.html", task: task, changeset: changeset)
+    render(conn, "edit.html", task: task, changeset: changeset,
+      list_users: TaskTracker.Users.list_users())
   end
 
   def update(conn, %{"id" => id, "task" => task_params}) do

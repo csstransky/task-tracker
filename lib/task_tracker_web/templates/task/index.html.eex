@@ -1,11 +1,12 @@
 <h1>Listing Tasks</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Title</th>
       <th>Desc</th>
       <th>Time</th>
+      <th>Complete</th>
 
       <th></th>
     </tr>
@@ -16,6 +17,7 @@
       <td><%= task.title %></td>
       <td><%= task.desc %></td>
       <td><%= task.time %></td>
+      <td><%= task.complete %></td>
 
       <td>
         <%= link "Show", to: Routes.task_path(@conn, :show, task) %>

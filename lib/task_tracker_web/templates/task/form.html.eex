@@ -1,3 +1,6 @@
+
+<%= inspect(Enum.map(@list_users, fn user -> user.name end)) %>
+
 <%= form_for @changeset, @action, fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
@@ -9,13 +12,25 @@
   <%= text_input f, :title %>
   <%= error_tag f, :title %>
 
+  </br>
   <%= label f, :desc %>
   <%= textarea f, :desc %>
   <%= error_tag f, :desc %>
 
+  </br>
   <%= label f, :time %>
-  <%= number_input f, :time, step: "any" %>
+  <%= number_input f, :time, step: "0.25" %>
   <%= error_tag f, :time %>
+
+  </br>
+  <%= label f, :complete %>
+  <%= checkbox f, :complete %>
+  <%= error_tag f, :complete %>
+
+  </br>
+  <%= label f, :user_id %>
+  <%= select f, :user_id, Enum.map(@list_users, fn user -> user.name end) %>
+  <%= error_tag f, :user_id %>
 
   <div>
     <%= submit "Save" %>

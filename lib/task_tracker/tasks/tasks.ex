@@ -50,9 +50,22 @@ defmodule TaskTracker.Tasks do
 
   """
   def create_task(attrs \\ %{}) do
+    #TODO Get this right later
+    if get_time(attrs) < 0 do
+      attrs = Map.put(attrs, "time", "ERROR")
+    end
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()
+  end
+
+  defp get_time(attrs) do
+    time_string = Map.get(attrs, "time")
+    if time_string == "0" || time_string =="" do
+      0
+    else
+      String.to_float(time_string)
+    end
   end
 
   @doc """

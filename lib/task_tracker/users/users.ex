@@ -40,12 +40,19 @@ defmodule TaskTracker.Users do
   def get_user(id) do
     Repo.one from u in User,
       where: u.id == ^id
-      #TODO Get this working eventually
-      #preload: [tasks: :assigned_user]
   end
 
   def get_user_by_name(name) do
     Repo.get_by(User, name: name)
+  end
+
+  def id_to_name(id) do
+    if id == nil do
+      "nil"
+    else
+      user = get_user!(id)
+      user.name
+    end
   end
 
   @doc """

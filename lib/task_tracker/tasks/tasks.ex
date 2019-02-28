@@ -35,8 +35,22 @@ defmodule TaskTracker.Tasks do
       ** (Ecto.NoResultsError)
 
   """
-  def get_task!(id), do: Repo.get!(Task, id)
+  #TODO Get rid of this line def get_task!(id), do: Repo.get!(Task, id)
 
+  def get_task!(id) do
+      Repo.one! from p in Task,
+        where: p.id == ^id,
+        preload: [:user]
+    end
+
+  def user_id_to_name(user_id) do
+    if user_id == nil do
+      "No User Assigned"
+    else
+      user = TaskTracker.Users.get_user!(user_id)
+      user.name
+    end
+  end
   @doc """
   Creates a task.
 

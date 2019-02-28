@@ -7,6 +7,7 @@
       <th>Desc</th>
       <th>Time</th>
       <th>Complete</th>
+      <th>User</th>
 
       <th></th>
     </tr>
@@ -18,6 +19,7 @@
       <td><%= task.desc %></td>
       <td><%= task.time %></td>
       <td><%= task.complete %></td>
+      <td><%= TaskTracker.Tasks.user_id_to_name(task.user_id) %></td>
 
       <td>
         <%= link "Show", to: Routes.task_path(@conn, :show, task) %>

@@ -5,8 +5,7 @@ defmodule TaskTrackerWeb.UserController do
   alias TaskTracker.Users.User
 
   def index(conn, _params) do
-    # TODO Maybe put this somewhere else so you can have more desired behavior
-    if conn.assigns.current_user do
+    if conn.request_path == "/profile" && conn.assigns.current_user do
       user_id = conn.assigns.current_user.id
       show(conn, %{"id" => user_id})
     else
@@ -26,7 +25,7 @@ defmodule TaskTrackerWeb.UserController do
         conn
         |> put_flash(:info, "User created successfully.")
         |> put_session(:user_id, user.id)
-        |> redirect(to: Routes.product_path(conn, :index))
+        |> redirect(to: Routes.task_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)

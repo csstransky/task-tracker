@@ -12,13 +12,10 @@
 
 alias TaskTracker.Repo
 alias TaskTracker.Users.User
+alias TaskTracker.Tasks.Task
 
-Repo.insert!(%User{name: "alice@example.com", admin: true})
-Repo.insert!(%User{name: "bob@example.com", admin: false})
-
-alias TaskTracker.Products.Product
-Repo.insert!(%Product{name: "Rubber Duck", desc: "Yellow",
-                      price: Decimal.new("4.99"), inventory: 5})
-Repo.insert!(%Product{name: "Bear", desc: "500lbs; angry",
-                      price: Decimal.new("44.99"), inventory: 2})
-
+Repo.insert!(%User{name: "alice", admin: true})
+Repo.insert!(%User{name: "bob"@example.com"", admin: false})
+# TODO find way to get user here
+Repo.insert!(%Task{title: "Do the thing.", desc: "It must be done.",
+              time: Decimal.new("1.5"), assigned_user: "TODO"})

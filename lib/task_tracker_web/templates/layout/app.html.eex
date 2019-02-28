@@ -20,9 +20,7 @@
             </li>
             <%= if @current_user do %>
               <li class="nav-item">
-                <!-- @TODO Get this working for all profiles -->
-                <!-- Just need something like "users" + @current_user.id -->
-                <a class="nav-link" href="/users">Profile</a>
+                <a class="nav-link" href="/profile">Profile</a>
               </li>
             <% else %>
               <li class="nav-item">
@@ -46,6 +44,7 @@
                     [class: "form-inline"], fn f -> %>
               <%= text_input f, :name, class: "form-control" %>
               <%= submit "Login", class: "btn btn-secondary" %>
+              <%= link "Register", to: Routes.user_path(@conn, :new) %>
             <% end %>
           <% end %>
         </div>

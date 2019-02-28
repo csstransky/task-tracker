@@ -39,8 +39,9 @@ defmodule TaskTracker.Users do
 
   def get_user(id) do
     Repo.one from u in User,
-      where: u.id == ^id,
-      preload: [cart_items: :product]
+      where: u.id == ^id
+      #TODO Get this working eventually
+      #preload: [tasks: :assigned_user]
   end
 
   def get_user_by_name(name) do

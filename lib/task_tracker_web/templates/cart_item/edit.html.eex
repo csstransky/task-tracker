@@ -1,5 +1,0 @@
-<h1>Edit Cart item</h1>
-
-<%= render "form.html", Map.put(assigns, :action, Routes.cart_item_path(@conn, :update, @cart_item)) %>
-
-<span><%= link "Back", to: Routes.cart_item_path(@conn, :index) %></span>

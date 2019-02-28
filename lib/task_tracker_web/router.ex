@@ -25,8 +25,9 @@ defmodule TaskTrackerWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/tasks", ProductController
+    resources "/tasks", TaskController
     resources "/users", UserController
+    resources "/profile", UserController
     resources "/sessions", SessionController, only: [:create, :delete], singleton: true
   end
 

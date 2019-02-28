@@ -1,5 +1,14 @@
+<%= if @current_user do %>
+    <!-- @TODO Make a special page for a user -->
+    <div class="row">
+      <div class="col-12">
+        <h1>Welcome <%= @current_user.name %>!</h1>
+      </div>
+    </div>
+<% else %>
 <div class="row">
   <div class="col-12">
     <h1>Welcome to Task Tracker</h1>
   </div>
 </div>
+<% end %>

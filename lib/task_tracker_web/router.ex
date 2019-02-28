@@ -25,15 +25,9 @@ defmodule TaskTrackerWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/products", ProductController
+    resources "/tasks", ProductController
     resources "/users", UserController
-    resources "/cart_items", CartItemController
     resources "/sessions", SessionController, only: [:create, :delete], singleton: true
-  end
-
-  scope "/ajax", TaskTrackerWeb do
-    pipe_through :ajax
-    resources "/ratings", RatingController, except: [:new, :edit]
   end
 
   # Other scopes may use custom stacks.

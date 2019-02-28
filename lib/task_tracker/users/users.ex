@@ -43,8 +43,8 @@ defmodule TaskTracker.Users do
       preload: [cart_items: :product]
   end
 
-  def get_user_by_email(email) do
-    Repo.get_by(User, email: email)
+  def get_user_by_name(name) do
+    Repo.get_by(User, name: name)
   end
 
   @doc """

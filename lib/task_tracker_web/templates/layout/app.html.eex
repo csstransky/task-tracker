@@ -18,22 +18,33 @@
             <li class="nav-item active">
               <a class="nav-link" href="/">Home</a>
             </li>
+            <%= if @current_user do %>
+              <li class="nav-item">
+                <!-- @TODO Get this working for all profiles -->
+                <!-- Just need something like "users" + @current_user.id -->
+                <a class="nav-link" href="/users">Profile</a>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <a class="nav-link" href="/users">Users</a>
+              </li>
+            <% end %>
             <li class="nav-item">
-              <a class="nav-link" href="/products">Products</a>
+              <a class="nav-link" href="/tasks">Tasks</a>
             </li>
           </ul>
         </div>
         <div class="col-4">
           <%= if @current_user do %>
             <p class="my-3">
-              User: <%= @current_user.email %> |
+              User: <%= @current_user.name %> |
               <%= link("Logout", to: Routes.session_path(@conn, :delete),
                 method: :delete) %>
             </p>
           <% else %>
             <%= form_for @conn, Routes.session_path(@conn, :create),
                     [class: "form-inline"], fn f -> %>
-              <%= text_input f, :email, class: "form-control" %>
+              <%= text_input f, :name, class: "form-control" %>
               <%= submit "Login", class: "btn btn-secondary" %>
             <% end %>
           <% end %>
@@ -54,15 +65,6 @@
       <div class="row">
         <div class="col-8">
           <%= render @view_module, @view_template, assigns %>
-        </div>
-
-        <div class="col-4">
-          <%= if @current_user do %>
-            <%= render TaskTrackerWeb.CartItemView, "index.html",
-                  Map.put(assigns, :cart_items, @current_user.cart_items) %>
-          <% else %>
-            <p><%= link "Register", to: Routes.user_path(@conn, :new) %></p>
-          <% end %>
         </div>
       </div>
     </div>

@@ -68,16 +68,7 @@ defmodule TaskTracker.Tasks do
     |> Task.changeset(attrs)
     |> Repo.insert()
   end
-
-  defp get_time(attrs) do
-    time_string = Map.get(attrs, "time")
-    if time_string == "0" || time_string =="" do
-      0
-    else
-      String.to_float(time_string)
-    end
-  end
-
+  
   @doc """
   Updates a task.
 

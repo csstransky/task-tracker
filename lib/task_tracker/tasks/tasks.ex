@@ -21,6 +21,13 @@ defmodule TaskTracker.Tasks do
     Repo.all(Task)
   end
 
+  def list_user_tasks(user_id) do
+    query = from t in Task,
+             where: t.user_id == ^user_id,
+             select: t
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single task.
 
@@ -67,15 +74,6 @@ defmodule TaskTracker.Tasks do
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()
-  end
-
-  defp get_time(attrs) do
-    time_string = Map.get(attrs, "time")
-    if time_string == "0" || time_string =="" do
-      0
-    else
-      String.to_float(time_string)
-    end
   end
 
   @doc """

@@ -3,10 +3,9 @@ defmodule TaskTrackerWeb.PageController do
 
   def index(conn, _params) do
     if conn.assigns.current_user do
-      #user_id = TaskTracker.Users.get_user_by_name(conn.assigns.current_user)
-      #user_tasks = TaskTracker.Tasks.list_tasks
-      #render(conn, "index.html", user_tasks: user_tasks)
-      render conn, "index.html"
+      user = conn.assigns.current_user
+      user_tasks = TaskTracker.Tasks.list_user_tasks(user.id)
+      render(conn, "index.html", user_tasks: user_tasks)
     else
       render conn, "index.html"
     end

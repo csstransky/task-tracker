@@ -39,3 +39,6 @@
   </div>
 </div>
 <% end %>
+<p>Link back to the main domain:
+  <a href="http://cstransky.me/">cstransky.me</a>.<br>
+</p>  

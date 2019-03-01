@@ -1,4 +1,4 @@
-# TaskTracker  
+# Task Tracker  
 Uses Elixir and Ecto (with PostgreSQL) to assign, create, and delete users and
 tasks to a local database, all in an integrated web format. The UI is mainly
 comprised of Bootstrap.

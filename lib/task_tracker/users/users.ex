@@ -43,7 +43,7 @@ defmodule TaskTracker.Users do
   end
 
   def get_user_by_name(name) do
-    Repo.get_by!(User, name: name)
+    Repo.get_by(User, name: name)
   end
 
   def id_to_name(id) do

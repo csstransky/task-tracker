@@ -7,27 +7,37 @@
 
   <div class="form-group">
     <%= label f, :title %>
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <%= error_tag f, :title %>
+      </div>
+    <% end %>
     <%= text_input f, :title, class: "form-control" %>
-    <%= error_tag f, :title %>
 
-    </br>
+
     <%= label f, :desc %>
-    <%= textarea f, :desc, class: "form-control" %>
     <%= error_tag f, :desc %>
+    <%= textarea f, :desc, class: "form-control" %>
 
     </br>
     <%= label f, :time %>
+    <%= if @changeset.action do %>
+      <div class="alert alert-danger">
+        <%= error_tag f, :time %>
+      </div>
+    <% end %>
     <p><%= number_input f, :time, step: "0.25", value: 0.0%> hours</p>
-    <%= error_tag f, :time %>
 
     <%= label f, :complete %>
-    <%= checkbox f, :complete %>
     <%= error_tag f, :complete %>
+    <%= checkbox f, :complete %>
+
 
     </br>
     <%= label f, :user_id %>
+        <%= error_tag f, :user_id %>
     <%= select f, :user_id, Enum.map(@list_users, fn user -> {user.name, user.id} end), class: "form-control" %>
-    <%= error_tag f, :user_id %>
+
 
     <div>
       <%= submit "Save", class: "btn btn-primary" %>

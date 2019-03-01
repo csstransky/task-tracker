@@ -21,6 +21,13 @@ defmodule TaskTracker.Tasks do
     Repo.all(Task)
   end
 
+  def list_user_tasks(user_id) do
+    query = from t in Task,
+             where: t.user_id == ^user_id,
+             select: t
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single task.
 
@@ -68,7 +75,7 @@ defmodule TaskTracker.Tasks do
     |> Task.changeset(attrs)
     |> Repo.insert()
   end
-  
+
   @doc """
   Updates a task.
 

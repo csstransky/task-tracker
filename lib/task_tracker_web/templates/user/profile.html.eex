@@ -1,4 +1,4 @@
-<h1>User Information</h1>
+<h1><%= @user.name %>'s Profile</h1>
 
 <ul class="list-group">
   <li class="list-group-item">
@@ -17,6 +17,7 @@
   </li>
 
 </ul>
+<p>TODO: In the future, I want to post all the tasks assigned to this user. </p>
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user), class: "btn btn-primary" %></span>
 <span><%= link "Back", to: Routes.user_path(@conn, :index), class: "btn btn-secondary" %></span>

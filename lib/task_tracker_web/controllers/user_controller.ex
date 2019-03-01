@@ -7,7 +7,7 @@ defmodule TaskTrackerWeb.UserController do
   def index(conn, _params) do
     if conn.request_path == "/profile" && conn.assigns.current_user do
       user_id = conn.assigns.current_user.id
-      show(conn, %{"id" => user_id})
+      profile(conn, %{"id" => user_id})
     else
       users = Users.list_users()
       render(conn, "index.html", users: users)
@@ -64,5 +64,10 @@ defmodule TaskTrackerWeb.UserController do
     conn
     |> put_flash(:info, "User deleted successfully.")
     |> redirect(to: Routes.user_path(conn, :index))
+  end
+
+  def profile(conn, %{"id" => id}) do
+    user = Users.get_user!(id)
+    render(conn, "profile.html", user: user)
   end
 end

@@ -55,6 +55,11 @@ defmodule TaskTracker.Users do
     end
   end
 
+  def name_to_id(name) do
+    user = get_user_by_name(name)
+    user.id
+  end
+
   @doc """
   Creates a user.
 

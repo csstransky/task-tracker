@@ -4,10 +4,10 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Desc</th>
       <th>Time</th>
       <th>Complete</th>
       <th>User</th>
+      <th>Date Created</th>
 
       <th></th>
     </tr>
@@ -16,19 +16,17 @@
 <%= for task <- @tasks do %>
     <tr>
       <td><%= task.title %></td>
-      <td><%= task.desc %></td>
-      <td><%= task.time %></td>
+      <td><%= task.time %> hours</td>
       <td><%= task.complete %></td>
       <td><%= TaskTracker.Tasks.user_id_to_name(task.user_id) %></td>
+      <td><%= task.inserted_at %></td>
 
-      <td>
-        <%= link "Show", to: Routes.task_path(@conn, :show, task) %>
-        <%= link "Edit", to: Routes.task_path(@conn, :edit, task) %>
-        <%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] %>
-      </td>
+      <td><%= link "Show", to: Routes.task_path(@conn, :show, task), class: "btn btn-info"  %></td>
+      <td><%= link "Edit", to: Routes.task_path(@conn, :edit, task), class: "btn btn-light" %></td>
+      <td><%= link "Delete", to: Routes.task_path(@conn, :delete, task), class: "btn btn-secondary", method: :delete, data: [confirm: "Are you sure?"] %></td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<span><%= link "New Task", to: Routes.task_path(@conn, :new) %></span>
+<span><%= link "New Task", to: Routes.task_path(@conn, :new), class: "btn btn-primary" %></span>

@@ -1,9 +1,9 @@
-defmodule HuskyShop.MixProject do
+defmodule TaskTracker.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :husky_shop,
+      app: :task_tracker,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env),
@@ -19,7 +19,7 @@ defmodule HuskyShop.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {HuskyShop.Application, []},
+      mod: {TaskTracker.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -41,7 +41,8 @@ defmodule HuskyShop.MixProject do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:distillery, "~> 2.0"},
     ]
   end
 

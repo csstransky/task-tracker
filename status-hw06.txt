@@ -25,6 +25,9 @@ Yes, I also added a profile page for the user to check their tasks, it's
 located at the top of the page under "Profile", but only shows up f you're 
 logged in.
 
+Note: The description of the tasks does not show up when listed, but does 
+show up on its personal "show" page.
+
 
 6. Is your app properly deployed? If not, what went wrong?
 Yes.

@@ -17,6 +17,7 @@
   </li>
 
 </ul>
+</br>
 <h2><%= @user.name %>'s Tasks</h2>
 
 <table class="table table-striped">

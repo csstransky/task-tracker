@@ -6,9 +6,9 @@ defmodule TaskTracker.UsersTest do
   describe "users" do
     alias TaskTracker.Users.User
 
-    @valid_attrs %{admin: true, name: "some name"}
-    @update_attrs %{admin: false, name: "some updated name"}
-    @invalid_attrs %{admin: nil, name: nil}
+    @valid_attrs %{manager: true, name: "some name"}
+    @update_attrs %{manager: false, name: "some updated name"}
+    @invalid_attrs %{manager: nil, name: nil}
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -31,7 +31,7 @@ defmodule TaskTracker.UsersTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Users.create_user(@valid_attrs)
-      assert user.admin == true
+      assert user.manager == true
       assert user.name == "some name"
     end
 
@@ -44,7 +44,7 @@ defmodule TaskTracker.UsersTest do
       assert {:ok, %User{} = user} = Users.update_user(user, @update_attrs)
 
       
-      assert user.admin == false
+      assert user.manager == false
       assert user.name == "some updated name"
     end
 

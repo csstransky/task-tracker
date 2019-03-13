@@ -12,7 +12,7 @@ defmodule TaskTrackerWeb.TaskController do
 
   def new(conn, _params) do
     changeset = Tasks.change_task(%Task{})
-    render(conn, "new.html", changeset: changeset,
+    render(conn, "new.html", task: nil, changeset: changeset,
       list_users: Users.list_users())
   end
 

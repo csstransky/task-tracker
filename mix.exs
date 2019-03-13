@@ -43,6 +43,7 @@ defmodule TaskTracker.MixProject do
       {:jason, "~> 1.0"},
       {:cowboy, "~> 1.0"},
       {:distillery, "~> 2.0"},
+      {:calendar, "~> 0.17.2"},
     ]
   end
 

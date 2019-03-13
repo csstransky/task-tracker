@@ -9,6 +9,7 @@ defmodule TaskTracker.Tasks.Task do
     field :complete, :boolean, default: false
     field :desc, :string
     field :time, :decimal
+    field :time_blocks, {:array, {:array, :naive_datetime}}
     field :title, :string
     belongs_to :user, TaskTracker.Users.User
 
@@ -19,7 +20,7 @@ defmodule TaskTracker.Tasks.Task do
   def changeset(task, attrs) do
     task
     |> cast(attrs, [:title, :desc, :time, :complete, :user_id])
-    |> validate_required([:title, :time, :complete, :user_id])
+    |> validate_required([:title, :complete, :user_id])
     |> validate_positive_time(:time)
   end
 

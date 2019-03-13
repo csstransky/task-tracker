@@ -20,13 +20,10 @@
     <%= textarea f, :desc, class: "form-control" %>
 
     </br>
-    <%= label f, :time %>
-    <%= if @changeset.action do %>
-      <div class="alert alert-danger">
-        <%= error_tag f, :time %>
-      </div>
+    <%= if @task do %>
+      <%= label f, :time %>
+      <p><%= inspect(@task) %>TODO: Add a button here to a link that fixes time blocks</p>
     <% end %>
-    <p><%= number_input f, :time, step: "0.25", value: 0.0%> hours</p>
 
     <%= label f, :complete %>
     <%= error_tag f, :complete %>

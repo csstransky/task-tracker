@@ -45,10 +45,14 @@ defmodule TaskTracker.Tasks do
   #TODO Get rid of this line def get_task!(id), do: Repo.get!(Task, id)
 
   def get_task!(id) do
-      Repo.one! from p in Task,
-        where: p.id == ^id,
-        preload: [:time_blocks]
-    end
+    Repo.one! from p in Task,
+      where: p.id == ^id,
+      preload: [:time_blocks]
+  end
+
+  def get_task_by_title(title) do
+    Repo.get_by(Task, title: title)
+  end
 
   def user_id_to_name(user_id) do
     if user_id == nil do

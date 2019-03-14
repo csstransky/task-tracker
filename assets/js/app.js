@@ -20,17 +20,21 @@ import _ from "lodash";
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 
+// <p id="time-start-text">Time start</p>
+// <button id="time-start-button" class="btn btn-primary">Time Start</button>
+// <p id="time-end-text">Time end</p>
+// <button id="time-end-button" class="btn btn-secondary">Time End</button>
+
 $(function () {
-  // TODO: Comeback to this and fix everything later
   $('#time-end-button').click((ev) => {
     let task_id = $(ev.target).data('task-id');
-    let time_start = $('#time-start').val();
-    let time_end = $('#time-end').val();
+    let time_start = $('#time-start-text').val();
+    let time_end = $('#time-end-text').val();
 
     let text = JSON.stringify({
       time_block: {
         time_start: time_start,
-        time_end: time_end,
+        time_end: Date.now(),
         task_id: task_id,
       },
     });
@@ -41,9 +45,12 @@ $(function () {
       contentType: "application/json; charset=UTF-8",
       data: text,
       success: (resp) => {
-        $('#rating-form').text(`(your rating: ${resp.data.stars})`);
-        update_stars(product_id);
+        $('#time-start-text').text(`(your rating: ${resp.data.time_end})`);
       },
     });
+  });
+  $('#time-start-button').click((ev) => {
+      $('#time-start-text').val() = Date.now();
+      $('#time-start-text').val() = "asd";
   });
 });

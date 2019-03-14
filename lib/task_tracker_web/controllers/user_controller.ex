@@ -5,13 +5,8 @@ defmodule TaskTrackerWeb.UserController do
   alias TaskTracker.Users.User
 
   def index(conn, _params) do
-    if conn.request_path == "/profile" && conn.assigns.current_user do
-      user_id = conn.assigns.current_user.id
-      profile(conn, %{"id" => user_id})
-    else
-      users = Users.list_users()
-      render(conn, "index.html", users: users)
-    end
+    users = Users.list_users()
+    render(conn, "index.html", users: users)
   end
 
   def new(conn, _params) do

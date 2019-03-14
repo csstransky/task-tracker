@@ -59,4 +59,10 @@ defmodule TaskTrackerWeb.ManagerController do
     |> put_flash(:info, "Manager deleted successfully.")
     |> redirect(to: Routes.manager_path(conn, :index))
   end
+
+  def profile(conn, %{"id" => id}) do
+    manager = Managers.get_manager!(id)
+    manager_underlings = TaskTracker.Users.list_manager_underlings(id)
+    render(conn, "profile.html", manager: manager, manager_underlings: manager_underlings)
+  end
 end

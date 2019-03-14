@@ -5,8 +5,9 @@ defmodule TaskTracker.Users.User do
 
   schema "users" do
     field :name, :string
+    belongs_to :manager, TaskTracker.Users.User
+    has_many :users, TaskTracker.Users.User, foreign_key: :manager_id #TODO Look at some documentation
     has_many :tasks, TaskTracker.Tasks.Task
-    belongs_to :manager, TaskTracker.Managers.Manager
 
     timestamps()
   end

@@ -1,11 +1,11 @@
-defmodule TaskTrackerWeb.Plugs.RequireManager do
+defmodule TaskTrackerWeb.Plugs.RequireAdmin do
   use TaskTrackerWeb, :controller
 
   def init(args), do: args
 
   def call(conn, _params) do
     user = conn.assigns[:current_user]
-    if user.manager do
+    if user.admin do
       conn
     else
       conn

@@ -7,8 +7,8 @@
   </li>
 
   <li class="list-group-item">
-    <strong>Manager:</strong>
-    <%= @user.manager %>
+    <strong>Admin:</strong>
+    <%= @user.admin %>
   </li>
 
   <li class="list-group-item">

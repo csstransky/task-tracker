@@ -3,6 +3,7 @@ defmodule TaskTrackerWeb.UserController do
 
   alias TaskTracker.Users
   alias TaskTracker.Users.User
+  alias TaskTracker.Repo
 
   def index(conn, _params) do
     if conn.request_path == "/profile" && conn.assigns.current_user do
@@ -10,6 +11,7 @@ defmodule TaskTrackerWeb.UserController do
       profile(conn, %{"id" => user_id})
     else
       users = Users.list_users()
+      |> Repo.preload(:manager)
       render(conn, "index.html", users: users)
     end
   end

@@ -5,7 +5,6 @@ defmodule TaskTracker.Repo.Migrations.CreateTimeBlocks do
     create table(:time_blocks) do
       add :time_start, :naive_datetime, null: false
       add :time_end, :naive_datetime, null: false
-      add :total_time, :decimal
       add :task_id, references(:tasks, on_delete: :delete_all), null: false
 
       timestamps()

@@ -21,9 +21,9 @@ Repo.insert!(%User{name: "charles", admin: false})
 Repo.insert!(%User{name: "alice", admin: true, manager: Users.get_user_by_name("charles")})
 Repo.insert!(%User{name: "bob", admin: false, manager: Users.get_user_by_name("charles")})
 Repo.insert!(%Task{title: "Do the thing.", desc: "It must be done.", complete: false,
-              time: Decimal.new("1.5"), user: Users.get_user_by_name("alice")})
+              user: Users.get_user_by_name("alice")})
 Repo.insert!(%Task{title: "Test Task", desc: "Should Work", complete: true,
-              user: Users.get_user_by_name("bob"), time: 1})
+              user: Users.get_user_by_name("bob")})
 Repo.insert!(%TimeBlock{time_start: ~N[2019-03-12 17:00:00], time_end: ~N[2019-03-14 17:59:30],
   task: Tasks.get_task_by_title("Do the thing.")})
   Repo.insert!(%TimeBlock{time_start: ~N[2019-03-13 17:00:00], time_end: ~N[2019-03-14 17:59:30],

@@ -13,7 +13,7 @@
 
   <li class="list-group-item">
     <strong>Time:</strong>
-    <%= @task.time %>
+    <p>TODO FIX THIS</p>
   </li>
 
   <li class="list-group-item">
@@ -45,22 +45,24 @@
       <tbody>
         <%= for time_block <- @time_blocks do %>
           <tr>
-            <td><%= time_block.time_start %></td>
-            <td><%= time_block.time_end %></td>
-
-
+            <td><input type="text" class="form-control" placeholder="<%= time_block.time_start %>"></td>
+            <td><input type="text" class="form-control" placeholder="<%= time_block.time_end %>"></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </li>
 </ul>
+
 <p id="time-start-text">Time start</p>
 <button id="time-start-button" class="btn btn-primary">Time Start</button>
 <p id="time-end-text">Time end</p>
-<button id="time-end-button" class="btn btn-secondary">Time End</button>
+<button id="time-end-button"
+  data-task-id="<%= @task.id %>"
+  class="btn btn-secondary">Time End</button>
 </br>
 </br>
+
 
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task), class: "btn btn-primary" %></span>
 <span><%= link "Back", to: Routes.task_path(@conn, :index), class: "btn btn-secondary" %></span>

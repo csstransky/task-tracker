@@ -14,9 +14,12 @@ alias TaskTracker.Repo
 alias TaskTracker.Users.User
 alias TaskTracker.Users
 alias TaskTracker.Tasks.Task
+alias TaskTracker.Managers
+alias TaskTracker.Managers.Manager
 
-Repo.insert!(%User{name: "alice", manager: true})
-Repo.insert!(%User{name: "bob", manager: false})
+Repo.insert!(%Manager{name: "charles"})
+Repo.insert!(%User{name: "alice", manager: Managers.get_manager_by_name("charles")})
+Repo.insert!(%User{name: "bob"})
 Repo.insert!(%Task{title: "Do the thing.", desc: "It must be done.", complete: false,
               time: Decimal.new("1.5"), user: Users.get_user_by_name("alice")})
 Repo.insert!(%Task{title: "Test Task", desc: "Should Work", complete: true,

@@ -14,7 +14,7 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.name %></td>
-      <td><%= user.manager %></td>
+      <td><%= inspect(user.manager) %></td>
       <td><%= user.inserted_at %>
 
       <td><%= link "Show", to: Routes.user_path(@conn, :show, user), class: "btn btn-info"  %></td>

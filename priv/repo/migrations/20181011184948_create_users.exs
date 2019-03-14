@@ -4,10 +4,11 @@ defmodule TaskTracker.Repo.Migrations.CreateUsers do
   def change do
     create table(:users) do
       add :name, :string
-      add :manager, :boolean, default: false, null: false
+      add :manager_id, references(:managers, on_delete: :nothing)
 
       timestamps()
     end
 
+    create index(:users, [:manager_id])
   end
 end

@@ -5,15 +5,26 @@ defmodule TaskTrackerWeb.TaskController do
   alias TaskTracker.Tasks.Task
   alias TaskTracker.Users
 
+  def null_user() do
+    %{
+      id: -1,
+      name: "",
+    }
+  end
+
   def index(conn, _params) do
     tasks = Tasks.list_tasks()
     render(conn, "index.html", tasks: tasks)
   end
 
   def new(conn, _params) do
+    # TODO: can't handle a nil case right now, find a way to change that
     changeset = Tasks.change_task(%Task{})
+    user = conn.assigns.current_user
+    # TODO: Find a way to get null assignment correct
+    user_list = Users.list_manager_underlings(user.id) ++ [user]
     render(conn, "new.html", task: nil, changeset: changeset,
-      list_users: Users.list_users())
+      list_users: user_list)
   end
 
   def create(conn, %{"task" => task_params}) do

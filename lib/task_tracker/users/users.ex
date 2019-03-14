@@ -21,6 +21,13 @@ defmodule TaskTracker.Users do
     Repo.all(User)
   end
 
+  def list_manager_underlings(manager_id) do
+    query = from u in User,
+             where: u.manager_id == ^manager_id,
+             select: u
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single user.
 

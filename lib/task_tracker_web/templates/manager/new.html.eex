@@ -1,5 +1,0 @@
-<h1>New Manager</h1>
-
-<p>If you wish to become a Manager, contact your system administrator</p>
-
-<span><%= link "Back", to: Routes.manager_path(@conn, :index) %></span>

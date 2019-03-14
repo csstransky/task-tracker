@@ -5,8 +5,7 @@ defmodule TaskTracker.Users.User do
 
   schema "users" do
     field :name, :string
-    belongs_to :manager, TaskTracker.Users.User
-    has_many :users, TaskTracker.Users.User, foreign_key: :manager_id #TODO Look at some documentation
+    field :manager, :boolean, default: false
     has_many :tasks, TaskTracker.Tasks.Task
 
     timestamps()
@@ -15,7 +14,7 @@ defmodule TaskTracker.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:name, :manager_id])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :manager])
+    |> validate_required([:name, :manager])
   end
 end

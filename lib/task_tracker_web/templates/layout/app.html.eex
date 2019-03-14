@@ -24,7 +24,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tasks">Tasks</a>
             </li>
-            <%= if @current_user || @current_manager do %>
+            <%= if @current_user do %>
               <li class="nav-item">
                 <a class="nav-link" href="/profile">Profile</a>
               </li>
@@ -32,13 +32,9 @@
           </ul>
         </div>
         <div class="col">
-          <%= if @current_user || @current_manager do %>
+          <%= if @current_user do %>
             <p class="my-3">
-              User: <%= if @current_user do
-                @current_user.name
-              else
-                @current_manager.name
-              end %> |
+              User: <%= @current_user.name %> |
               <%= link("Logout", to: Routes.session_path(@conn, :delete),
                 method: :delete) %>
             </p>

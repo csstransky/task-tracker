@@ -9,9 +9,9 @@ defmodule TaskTracker.Tasks.Task do
     field :complete, :boolean, default: false
     field :desc, :string
     field :time, :decimal
-    field :time_blocks, {:array, {:array, :naive_datetime}}
     field :title, :string
     belongs_to :user, TaskTracker.Users.User
+    has_many :time_blocks,  TaskTracker.TimeBlocks.TimeBlock
 
     timestamps()
   end

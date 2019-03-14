@@ -1,5 +1,4 @@
-<%= cond do %>
-  <% @current_user -> %>
+<%= if @current_user do %>
     <!-- @TODO Make a special page for a user -->
     <div class="row">
       <div class="col-12">
@@ -33,39 +32,13 @@
         </table>
       </div>
     </div>
-  <% @current_manager -> %>
-    <div class="row">
-      <div class="col-12">
-        <h1>Welcome <%= @current_manager.name %>!</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= for underling <- @manager_underlings do %>
-              <tr>
-                <td><%= underling.name %></td>
-
-                <td><%= link "Show", to: Routes.user_path(@conn, :show, underling), class: "btn btn-info"  %></td>
-                <td><%= link "Edit", to: Routes.user_path(@conn, :edit, underling), class: "btn btn-light" %></td>
-                <td><%= link "Delete", to: Routes.user_path(@conn, :delete, underling), class: "btn btn-secondary", method: :delete, data: [confirm: "Are you sure?"] %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  <% true -> %>
-    <div class="row">
-      <div class="col-12">
-        <h1>Welcome to Task Tracker</h1>
-      </div>
-    </div>
+<% else %>
+<div class="row">
+  <div class="col-12">
+    <h1>Welcome to Task Tracker</h1>
+  </div>
+</div>
 <% end %>
 <p>Link back to the main domain:
   <a href="http://cstransky.me/">cstransky.me</a>.<br>
-</p>
+</p>  

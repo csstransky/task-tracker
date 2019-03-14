@@ -48,6 +48,7 @@
     <% end %>
   </tbody>
 </table>
+<!-- TODO: add table here for underlings later -->
 
 <span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user), class: "btn btn-primary" %></span>
 <span><%= link "Back", to: Routes.user_path(@conn, :index), class: "btn btn-secondary" %></span>

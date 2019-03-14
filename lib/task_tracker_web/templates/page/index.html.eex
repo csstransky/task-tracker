@@ -3,33 +3,58 @@
     <div class="row">
       <div class="col-12">
         <h1>Welcome <%= @current_user.name %>!</h1>
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Desc</th>
-              <th>Time</th>
-              <th>Complete</th>
-
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <%= for task <- @user_tasks do %>
+        <%= if @user_tasks do %>
+          <table class="table table-striped">
+            <thead>
               <tr>
-                <td><%= task.title %></td>
-                <td><%= task.time %> hours</td>
-                <td><%= task.complete %></td>
-                <td><%= TaskTracker.Tasks.user_id_to_name(task.user_id) %></td>
-                <td><%= task.inserted_at %></td>
+                <th>Title</th>
+                <th>Desc</th>
+                <th>Time</th>
+                <th>Complete</th>
 
-                <td><%= link "Show", to: Routes.task_path(@conn, :show, task), class: "btn btn-info"  %></td>
-                <td><%= link "Edit", to: Routes.task_path(@conn, :edit, task), class: "btn btn-light" %></td>
-                <td><%= link "Delete", to: Routes.task_path(@conn, :delete, task), class: "btn btn-secondary", method: :delete, data: [confirm: "Are you sure?"] %></td>
+                <th></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              <%= for task <- @user_tasks do %>
+                <tr>
+                  <td><%= task.title %></td>
+                  <td><%= task.time %> hours</td>
+                  <td><%= task.complete %></td>
+                  <td><%= TaskTracker.Tasks.user_id_to_name(task.user_id) %></td>
+                  <td><%= task.inserted_at %></td>
+
+                  <td><%= link "Show", to: Routes.task_path(@conn, :show, task), class: "btn btn-info"  %></td>
+                  <td><%= link "Edit", to: Routes.task_path(@conn, :edit, task), class: "btn btn-light" %></td>
+                  <td><%= link "Delete", to: Routes.task_path(@conn, :delete, task), class: "btn btn-secondary", method: :delete, data: [confirm: "Are you sure?"] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+        <%= if @manager_underlings do %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= for underling <- @manager_underlings do %>
+                <tr>
+                  <td><%= underling.name %></td>
+                  <!-- TODO: Add more to this table when you can think of it -->
+
+                  <td><%= link "Show", to: Routes.user_path(@conn, :show, underling), class: "btn btn-info"  %></td>
+                  <td><%= link "Edit", to: Routes.user_path(@conn, :edit, underling), class: "btn btn-light" %></td>
+                  <td><%= link "Delete", to: Routes.user_path(@conn, :delete, underling), class: "btn btn-secondary", method: :delete, data: [confirm: "Are you sure?"] %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       </div>
     </div>
 <% else %>
@@ -41,4 +66,4 @@
 <% end %>
 <p>Link back to the main domain:
   <a href="http://cstransky.me/">cstransky.me</a>.<br>
-</p>  
+</p>

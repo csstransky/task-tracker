@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Manager</th>
       <th>Admin</th>
       <th>Date Created</th>
 
@@ -14,6 +15,8 @@
 <%= for user <- @users do %>
     <tr>
       <td><%= user.name %></td>
+      <!-- TODO: Get manager name to show up here  -->
+      <td><%= inspect(user.manager) %></td>
       <td><%= user.admin %></td>
       <td><%= user.inserted_at %>
 

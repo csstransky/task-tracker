@@ -1,4 +1,5 @@
-<%= if @current_user do %>
+<%= cond do %>
+  <% @current_user -> %>
     <!-- @TODO Make a special page for a user -->
     <div class="row">
       <div class="col-12">
@@ -32,13 +33,15 @@
         </table>
       </div>
     </div>
-<% else %>
-<div class="row">
-  <div class="col-12">
-    <h1>Welcome to Task Tracker</h1>
-  </div>
-</div>
+  <% @current_manager -> %>
+    <p> I am the page that manager should look at.</p>
+  <% true -> %>
+    <div class="row">
+      <div class="col-12">
+        <h1>Welcome to Task Tracker</h1>
+      </div>
+    </div>
 <% end %>
 <p>Link back to the main domain:
   <a href="http://cstransky.me/">cstransky.me</a>.<br>
-</p>  
+</p>

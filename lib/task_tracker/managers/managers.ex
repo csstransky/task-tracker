@@ -37,6 +37,11 @@ defmodule TaskTracker.Managers do
   """
   def get_manager!(id), do: Repo.get!(Manager, id)
 
+  def get_manager(id) do
+    Repo.one from m in Manager,
+      where: m.id == ^id
+  end
+
   def get_manager_by_name(name) do
     Repo.get_by(Manager, name: name)
   end

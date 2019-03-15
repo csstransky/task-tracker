@@ -18,17 +18,11 @@
     <%= label f, :desc %>
     <%= error_tag f, :desc %>
     <%= textarea f, :desc, class: "form-control" %>
-
     </br>
-    <%= if @task do %>
-      <%= label f, :time %>
-      <p><%= inspect(@task) %>TODO: Add a button here to a link that fixes time blocks</p>
-    <% end %>
 
     <%= label f, :complete %>
     <%= error_tag f, :complete %>
     <%= checkbox f, :complete %>
-
 
     </br>
     <%= label f, :user_id %>

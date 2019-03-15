@@ -43,18 +43,18 @@ $(function () {
 
   $('#time-end-button').click((ev) => {
     let task_id = $(ev.target).data('task-id');
-    let time_start = $('#time-start-text').val();
-    time_start = new Date(Date.now());
+    let time_start = $('#time-start-text').text();
 
+    console.log(time_start)
     let text = JSON.stringify({
       time_block: {
-        time_start: time_start,
+        time_start: new Date(time_start),
         time_end: new Date(Date.now()),
         task_id: task_id,
       },
     });
 
-    $.ajax(time_block_path, {
+    $.ajax(time_block_path_create, {
       method: "post",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
@@ -63,11 +63,47 @@ $(function () {
         $('#time-start-text').text(`(your rating: ${resp.data.time_end})`);
         update_text(task_id);
       },
+      error: (resp) => {
+        console.log(resp)
+      }
     });
   });
 
   $('#time-start-button').click((ev) => {
     var current_date =  new Date(Date.now());
     $('#time-start-text').text(current_date);
+  });
+
+  $('#time-update').click((ev) => {
+    console.log("JDHJDSADSADSSDDSSS")
+    console.log(time_block_path_update)
+    let task_id = $(ev.target).data('task-id');
+    let time_start = $('#time-block-start').val();
+    let time_end = $('#time-block-end').val();
+
+    console.log(task_id)
+    let text = JSON.stringify({
+      id: task_id,
+      time_block: {
+        time_start: time_start,
+        time_end: time_end,
+        task_id: task_id,
+      },
+    });
+    console.log(text.id)
+
+    $.ajax(time_block_path_update, {
+      method: "post",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: text,
+      success: (resp) => {
+        $('#time-start-text').text(`(GOOD GOOD: ${resp.data.time_end})`);
+        update_text(task_id);
+      },
+      error: (resp) => {
+        console.log(resp)
+      }
+    });
   });
 });

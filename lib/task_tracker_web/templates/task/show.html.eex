@@ -45,8 +45,16 @@
       <tbody>
         <%= for time_block <- @time_blocks do %>
           <tr>
-            <td><input type="text" class="form-control" placeholder="<%= time_block.time_start %>"></td>
-            <td><input type="text" class="form-control" placeholder="<%= time_block.time_end %>"></td>
+            <div id="">
+              <td><input id="time-block-start" type="text" class="form-control" value="<%= time_block.time_start %>"></td>
+              <td><input id="time-block-end" type="text" class="form-control" value="<%= time_block.time_end %>"></td>
+              <td><button id="time-update"
+                data-task-id="<%= time_block.id %>"
+                class="btn btn-primary">Update Time</button></td>
+            </div>
+            <script>
+              window.time_block_path_update = "<%= Routes.time_block_path(@conn, :update, time_block.id) %>"
+            </script>
           </tr>
         <% end %>
       </tbody>
@@ -54,16 +62,36 @@
   </li>
 </ul>
 
-<p id="time-start-text">Time start</p>
-<button id="time-start-button" class="btn btn-primary">Time Start</button>
-<p id="time-end-text">Time end</p>
-<button id="time-end-button"
-  data-task-id="<%= @task.id %>"
-  class="btn btn-secondary">Time End</button>
+<h2>Active Timer</h2>
+<ul>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col">
+        <button id="time-start-button" class="btn btn-success">Time Start</button>
+      </div>
+      <div class="col">
+        <p id="time-start-text">Time start</p>
+      </div>
+    </div>
+  </li>
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col">
+        <button id="time-end-button"
+          data-task-id="<%= @task.id %>"
+          class="btn btn-danger">Time End</button>
+      </div>
+      <div class="col">
+        <p id="time-end-text">Time end</p>
+      </div>
+    </div>
+  </li>
+</ul>
+
 </br>
 </br>
 <script>
-  window.time_block_path = "<%= Routes.time_block_path(@conn, :create) %>"
+  window.time_block_path_create = "<%= Routes.time_block_path(@conn, :create) %>"
 </script>
 
 

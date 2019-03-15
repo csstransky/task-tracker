@@ -20,16 +20,5 @@ defmodule TaskTracker.Tasks.Task do
     task
     |> cast(attrs, [:title, :desc, :complete, :user_id])
     |> validate_required([:title, :complete])
-    |> validate_positive_time(:time)
-  end
-
-  def validate_positive_time(changeset, field) do
-    validate_change(changeset, field, fn _, time ->
-      if Decimal.cmp(time, 0) == :lt do
-          [{field, "must be positive"}]
-        else
-          []
-        end
-    end)
   end
 end

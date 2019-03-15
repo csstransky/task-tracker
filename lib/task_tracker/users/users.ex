@@ -46,8 +46,10 @@ defmodule TaskTracker.Users do
 
   def get_user(id) do
     Repo.one from u in User,
-      where: u.id == ^id
+      where: u.id == ^id,
+      preload: [:manager]
   end
+
 
   def get_user_by_name(name) do
     Repo.get_by(User, name: name)
@@ -65,6 +67,15 @@ defmodule TaskTracker.Users do
   def name_to_id(name) do
     user = get_user_by_name(name)
     user.id
+  end
+
+  def user_id_to_manager_name(manager_id) do
+    if manager_id == nil do
+      "No Manager Assigned"
+    else
+      manager = TaskTracker.Users.get_user!(manager_id)
+      manager.name
+    end
   end
 
   @doc """

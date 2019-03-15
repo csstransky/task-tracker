@@ -17,7 +17,7 @@
     <tr>
       <td><%= user.name %></td>
       <!-- TODO: Get manager name to show up here  -->
-      <td><%= inspect(user.manager) %></td>
+      <td><%=  TaskTracker.Users.user_id_to_manager_name(user.manager_id) %></td>
       <td><%= user.admin %></td>
       <td><%= user.inserted_at %>
 

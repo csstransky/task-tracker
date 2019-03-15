@@ -32,6 +32,11 @@ defmodule TaskTracker.TimeBlocks do
     NaiveDateTime.from_iso8601!(iso8601_stamp)
   end
 
+  def get_total_time(task_id) do
+    time = list_task_time_blocks(task_id)
+    #TODO Finish the function that allows the time to be added together
+  end
+
   @doc """
   Gets a single time_block.
 

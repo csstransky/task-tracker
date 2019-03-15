@@ -20,27 +20,7 @@ import _ from "lodash";
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 
-// <p id="time-start-text">Time start</p>
-// <button id="time-start-button" class="btn btn-primary">Time Start</button>
-// <p id="time-end-text">Time end</p>
-// <button id="time-end-button" class="btn btn-secondary">Time End</button>
-// <script>
-//  window.rating_path = "<%= Routes.time_block_path(@conn, :create) %>";
-// </script>
-
 $(function () {
-  function update_text(task_id) {
-    $.ajax(`${text_block_path}?task_id=${task_id}`, {
-      method: "get",
-      dataType: "json",
-      contentType: "application/json; charset=UTF-8",
-      data: "",
-      success: (resp) => {
-        $('#time-end-text').text(`(Hello: ${resp.data.time_end})`);
-      },
-    });
-  }
-
   $('#time-end-button').click((ev) => {
     let task_id = $(ev.target).data('task-id');
     let time_start = $('#time-start-text').text();
@@ -60,8 +40,8 @@ $(function () {
       contentType: "application/json; charset=UTF-8",
       data: text,
       success: (resp) => {
-        $('#time-start-text').text(`(your rating: ${resp.data.time_end})`);
-        update_text(task_id);
+        $('#time-start-end').text("Time updating...");
+        location.reload();
       },
       error: (resp) => {
         console.log(resp)
@@ -74,32 +54,55 @@ $(function () {
     $('#time-start-text').text(current_date);
   });
 
-  $('#time-update').click((ev) => {
-    console.log("JDHJDSADSADSSDDSSS")
-    console.log(time_block_path_update)
-    let task_id = $(ev.target).data('task-id');
-    let time_start = $('#time-block-start').val();
-    let time_end = $('#time-block-end').val();
+  $('#time-delete-button').click((ev) => {
+    let time_block_id = $(ev.target).data('time-block-id')
+    let time_block_path_delete = $(ev.target).data('delete-path');
 
-    console.log(task_id)
     let text = JSON.stringify({
-      id: task_id,
+      id: time_block_id,
+    });
+
+    $.ajax(time_block_path_delete, {
+      method: "post",
+      dataType: "json",
+      contentType: "application/json; charset=UTF-8",
+      data: text,
+      success: (resp) => {
+        console.log(resp);
+        location.reload();
+      },
+      error: (resp) => {
+        console.log(resp)
+      }
+    });
+  });
+
+  $('#time-update-button').click((ev) => {
+    let task_id = $(ev.target).data('task-id');
+    let time_block_id = $(ev.target).data('time-block-id')
+    let row = $(ev.target).closest(".time-block-edit");
+    let time_start = $(row.find("#time-block-start")).val();
+    let time_end = $(row.find("#time-block-end")).val();
+    let time_block_path_update = $(ev.target).data('update-path');
+
+    console.log("je")
+    let text = JSON.stringify({
+      id: time_block_id,
       time_block: {
         time_start: time_start,
         time_end: time_end,
         task_id: task_id,
       },
     });
-    console.log(text.id)
 
     $.ajax(time_block_path_update, {
-      method: "post",
+      method: "put",
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
       data: text,
       success: (resp) => {
-        $('#time-start-text').text(`(GOOD GOOD: ${resp.data.time_end})`);
-        update_text(task_id);
+        $('#time-update-button').text("Time Updated");
+        console.log(resp);
       },
       error: (resp) => {
         console.log(resp)

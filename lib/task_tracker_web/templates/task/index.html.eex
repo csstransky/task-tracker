@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Time</th>
       <th>Complete</th>
       <th>User</th>
       <th>Date Created</th>
@@ -16,7 +15,6 @@
 <%= for task <- @tasks do %>
     <tr>
       <td><%= task.title %></td>
-      <td>TODO FIX THIS hours</td>
       <td><%= task.complete %></td>
       <td><%= TaskTracker.Tasks.user_id_to_name(task.user_id) %></td>
       <td><%= task.inserted_at %></td>

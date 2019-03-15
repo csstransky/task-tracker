@@ -3,10 +3,10 @@ Description=Task Tracker using PostgreSQL Database
 
 [Service]
 Type=simple
-User=task_tracker
-Group=task_tracker
+User=task_tracker2
+Group=task_tracker2
 Restart=on-failure
-Environment=MIX_ENV=prod "PORT=6837"
+Environment=MIX_ENV=prod "PORT=3829"
 Environment=LANG=en_US.UTF-8
 
 WorkingDirectory=/home/task_tracker/task-tracker

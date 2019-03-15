@@ -1,0 +1,51 @@
+
+Web Dev Spring 2018 HW07 Status
+
+Answer the following questions:
+
+
+1. What's your name?
+Cristian Stransky
+
+
+2. What's the URL of the github repo with your work for this HW?
+https://github.com/csstransky/task-tracker/tree/part2
+
+
+3. What's the version number of your github release?
+v1.2
+
+
+4. What's the URL that you deployed to?
+hw08.cstransky.me
+
+
+5. Is your app functionality complete? If not, what's missing?
+No, if there's more than 1 time block, the time update button ONLY works
+for the top time block. I figured the issue has to do with how JS handles
+global variables, and I would have to give an index value here for this button
+in the file for lib/task_tracker_web/templates/tasks/show.html:
+
+<td><button id="time-update-button"
+    data-time-block-id="<%= time_block.id %>"
+    data-task-id="<%= @task.id %>"
+    data-update-path="<%= Routes.time_block_path(@conn, :update, time_block.id) %>"
+    class="btn btn-primary">Update Time</button></td>
+    
+I think what happened was because it made a list of time blocks, the button only 
+existed for the top time block.
+              
+
+6. Is your app properly deployed? If not, what went wrong?
+Yes, deployment went well.
+
+
+7. Did you describe any significant design choices in your README?
+Yes.
+
+
+
+And here's a list of tasks for grading comments. Just leave this here:
+ - Development
+ - Deployment
+ - Submission

@@ -12,11 +12,6 @@
   </li>
 
   <li class="list-group-item">
-    <strong>Time:</strong>
-    <p>TODO FIX THIS</p>
-  </li>
-
-  <li class="list-group-item">
     <strong>Complete:</strong>
     <%= @task.complete %>
   </li>
@@ -44,17 +39,14 @@
       </thead>
       <tbody>
         <%= for time_block <- @time_blocks do %>
-          <tr>
-            <div id="">
-              <td><input id="time-block-start" type="text" class="form-control" value="<%= time_block.time_start %>"></td>
-              <td><input id="time-block-end" type="text" class="form-control" value="<%= time_block.time_end %>"></td>
-              <td><button id="time-update"
-                data-task-id="<%= time_block.id %>"
-                class="btn btn-primary">Update Time</button></td>
-            </div>
-            <script>
-              window.time_block_path_update = "<%= Routes.time_block_path(@conn, :update, time_block.id) %>"
-            </script>
+          <tr class="time-block-edit">
+            <td><input id="time-block-start" type="text" class="form-control" value="<%= time_block.time_start %>"></td>
+            <td><input id="time-block-end" type="text" class="form-control" value="<%= time_block.time_end %>"></td>
+            <td><button id="time-update-button"
+              data-time-block-id="<%= time_block.id %>"
+              data-task-id="<%= @task.id %>"
+              data-update-path="<%= Routes.time_block_path(@conn, :update, time_block.id) %>"
+              class="btn btn-primary">Update Time</button></td>
           </tr>
         <% end %>
       </tbody>

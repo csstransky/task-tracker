@@ -71,6 +71,8 @@ defmodule TaskTrackerWeb.UserController do
   def profile(conn, %{"id" => id}) do
     user = Users.get_user!(id)
     user_tasks = TaskTracker.Tasks.list_user_tasks(id)
-    render(conn, "profile.html", user: user, user_tasks: user_tasks)
+    manager_underlings = TaskTracker.Users.list_manager_underlings(id)
+    render(conn, "profile.html", user: user, user_tasks: user_tasks,
+      manager_underlings: manager_underlings)
   end
 end

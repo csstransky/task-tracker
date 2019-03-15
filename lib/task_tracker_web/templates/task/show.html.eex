@@ -62,6 +62,9 @@
   class="btn btn-secondary">Time End</button>
 </br>
 </br>
+<script>
+  window.time_block_path = "<%= Routes.time_block_path(@conn, :create) %>"
+</script>
 
 
 <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task), class: "btn btn-primary" %></span>

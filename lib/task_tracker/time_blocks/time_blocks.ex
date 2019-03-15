@@ -28,6 +28,10 @@ defmodule TaskTracker.TimeBlocks do
     Repo.all(query)
   end
 
+  def convert_to_naive_date_time(iso8601_stamp) do
+    NaiveDateTime.from_iso8601!(iso8601_stamp)
+  end
+
   @doc """
   Gets a single time_block.
 

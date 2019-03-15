@@ -40,10 +40,11 @@ $(function () {
       },
     });
   }
+
   $('#time-end-button').click((ev) => {
     let task_id = $(ev.target).data('task-id');
     let time_start = $('#time-start-text').val();
-    let time_end = $('#time-end-text').val();
+    time_start = new Date(Date.now());
 
     let text = JSON.stringify({
       time_block: {
@@ -64,6 +65,7 @@ $(function () {
       },
     });
   });
+
   $('#time-start-button').click((ev) => {
     var current_date =  new Date(Date.now());
     $('#time-start-text').text(current_date);

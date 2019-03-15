@@ -13,14 +13,19 @@ defmodule TaskTracker.TimeBlocks.TimeBlock do
 
   @doc false
   def changeset(time_block, attrs) do
+    IO.inspect(:time_start)
+    IO.inspect(:time_end)
+
     time_block
-    |> cast(attrs, [:time_start, :time_end, :total_time, :task_id])
+    |> cast(attrs, [:time_start, :time_end, :task_id])
     |> validate_required([:time_start, :time_end, :task_id])
-    |> validate_chronological([:time_start, :time_end])
+    # TODO get this working |> validate_chronological([:time_start, :time_end])
   end
 
   def validate_chronological(changeset, field) do
     validate_change(changeset, field, fn _, [time_start, time_end] ->
+      IO.inspect(time_start)
+      IO.inspect(time_end)
       if NaiveDateTime.compare(time_start, time_end) == :gt do
           [{field, "time block must be chronological"}]
         else

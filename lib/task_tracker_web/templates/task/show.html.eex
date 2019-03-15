@@ -42,7 +42,7 @@
           <tr class="time-block-edit">
             <td><input id="time-block-start" type="text" class="form-control" value="<%= time_block.time_start %>"></td>
             <td><input id="time-block-end" type="text" class="form-control" value="<%= time_block.time_end %>"></td>
-            <td><button id="time-update-button"
+            <td><button class="time-update-button"
               data-time-block-id="<%= time_block.id %>"
               data-task-id="<%= @task.id %>"
               data-update-path="<%= Routes.time_block_path(@conn, :update, time_block.id) %>"

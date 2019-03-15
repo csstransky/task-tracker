@@ -77,7 +77,7 @@ $(function () {
     });
   });
 
-  $('#time-update-button').click((ev) => {
+  $('.time-update-button').click((ev) => {
     let task_id = $(ev.target).data('task-id');
     let time_block_id = $(ev.target).data('time-block-id')
     let row = $(ev.target).closest(".time-block-edit");

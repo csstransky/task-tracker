@@ -11,7 +11,7 @@ config :task_tracker,
 
 # Configures the endpoint
 config :task_tracker, TaskTrackerWeb.Endpoint,
-  url: [host: "hw07.cstransky.me", port: 80],
+  url: [host: "hw07.cstransky.com", port: 80],
   secret_key_base: "7Dpm1KHaCkpXVmLYnyslKvhQWSc7HP00UfaKWNbCxzkKoZqhhcP/Ne8BVN6UL6Ka",
   render_errors: [view: TaskTrackerWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: TaskTracker.PubSub,

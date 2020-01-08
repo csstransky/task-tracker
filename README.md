@@ -5,7 +5,7 @@ comprised of Bootstrap.
 
 ## Demo
 
-Use the task tracker here: [hw07.cstransky.me](http://hw07.cstransky.me).
+Use the task tracker here: [hw07.cstransky.com](http://hw07.cstransky.com).
 
 ### Phoenix Local Deployment
 To start your Phoenix server:

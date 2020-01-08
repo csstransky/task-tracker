@@ -18,7 +18,7 @@ first have a start time in order for it to work correctly.
 
 ## Demo
 
-Use the task tracker here: [hw08.cstransky.me](http://hw08.cstransky.me).
+Use the task tracker here: [hw08.cstransky.com](http://hw08.cstransky.com).
 
 ### Phoenix Local Deployment
 To start your Phoenix server:

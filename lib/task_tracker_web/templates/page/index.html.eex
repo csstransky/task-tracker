@@ -4,6 +4,7 @@
       <div class="col-12">
         <h1>Welcome <%= @current_user.name %>!</h1>
         <%= if @user_tasks do %>
+	  <h2>Tasks</h2>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -32,6 +33,7 @@
           </table>
         <% end %>
         <%= if @manager_underlings do %>
+          <h2>Employees</h2>
           <table class="table table-striped">
             <thead>
               <tr>

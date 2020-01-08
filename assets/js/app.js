@@ -101,7 +101,7 @@ $(function () {
       contentType: "application/json; charset=UTF-8",
       data: text,
       success: (resp) => {
-        $('#time-update-button').text("Time Updated");
+        $('.time-update-button').text("Time Updated");
         console.log(resp);
       },
       error: (resp) => {
